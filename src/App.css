@@ -8,3 +8,45 @@
   padding: 20px;
   color: white;
 }
+
+.board{
+  box-shadow: 0px 0px 8px silver;
+}
+
+.square{
+  float:left;
+}
+
+.square p{
+  vertical-align: middle;
+  padding-top:30%;
+  overflow: hidden;
+}
+
+@media screen and (orientation:landscape) {
+  .board{
+    width:75vh;
+    height:75vh;
+  }
+  .square{
+    width:25vh;
+    height: 25vh;
+  }
+  .square p{
+    height: 25vh;
+  }
+}
+
+@media screen and (orientation:portrait) {
+  .board{
+    width:75vw;
+    height:75vw;
+  }
+  .square{
+    width:25vw;
+    height: 25vw;
+  }
+  .square p{
+    height:25vw;
+  }
+}
