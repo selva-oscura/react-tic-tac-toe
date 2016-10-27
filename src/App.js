@@ -1,21 +1,43 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import Board from './Board';
 
-class App extends Component {
+const App = React.createClass ({
+  getInitialState(){
+    return {
+      userScore: 0,
+      computerScore: 0,
+      userIcon: undefined,
+      board: [0,0,0,0,0,0,0,0,0]
+    }
+  },
+  updateScore(winner){
+    if(winner==="user"){
+
+    }else{
+
+    }
+  },
+  updateUserIcon(icon){
+
+  },
+  userPick(i){
+    let state = this.state;
+    state.board[i]=1;
+    this.setState({ 
+      state
+    });
+  },
   render() {
     return (
       <div className="App">
         <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+          <h2>Tic-Tac-Toe</h2>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <Board board={this.state.board} />
       </div>
     );
   }
-}
+});
 
 export default App;
