@@ -1,4 +1,5 @@
 import React from 'react';
+import Token from './Token';
 
 const Square = ({value, i, userPick}) => (
 		<div className="square"
@@ -7,9 +8,7 @@ const Square = ({value, i, userPick}) => (
 				userPick(i);
 			}
 		}>
-			<p>
-				{i}, {value}
-			</p>
+			<Token playerToken={value} />
 		</div>
 )
 
