@@ -22,19 +22,21 @@ const App = React.createClass ({
 
   },
   userPick(i){
-    let state = this.state;
-    state.board[i]=1;
-    this.setState({ 
-      state
-    });
+    console.log('userPick', i)
   },
   render() {
+    console.log('this.state', this.state)
+    console.log('this.props', this.props)
+    console.log('this', this)
     return (
       <div className="App">
         <div className="App-header">
           <h2>Tic-Tac-Toe</h2>
         </div>
-        <Board board={this.state.board} />
+        <Board 
+          board={this.state.board} 
+          userPick={this.userPick} 
+        />
       </div>
     );
   }
