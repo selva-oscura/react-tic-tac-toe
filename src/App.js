@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import Message from './Message';
 import Board from './Board';
 import ErrorMessage from './ErrorMessage';
 
@@ -11,7 +12,7 @@ const App = React.createClass ({
       userIcon: undefined,
       playerTurn: undefined,
       board: [0,0,0,0,0,0,0,0,0],
-      message: 0,
+      messageShorthand: 0,
       errorMessage: undefined,
     }
   },
@@ -45,6 +46,9 @@ const App = React.createClass ({
         <div className="App-header">
           <h2>Tic-Tac-Toe</h2>
         </div>
+        <Message 
+          messageShorthand={this.state.messageShorthand}
+        />
         <Board 
           board={this.state.board} 
           userPick={this.userPick} 
