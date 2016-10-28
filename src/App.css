@@ -1,52 +1,71 @@
+*{
+  box-sizing: border-box;
+}
 .App {
   text-align: center;
 }
 
 .App-header {
   background-color: #222;
-  height: 150px;
-  padding: 20px;
   color: white;
 }
 
 .board{
   box-shadow: 0px 0px 8px silver;
+  margin: 5vh auto;
 }
 
 .square{
   float:left;
 }
 
-.square p{
-  vertical-align: middle;
-  padding-top:30%;
-  overflow: hidden;
-}
 
 @media screen and (orientation:landscape) {
+  .App-header{
+    height: 10vh;
+    padding: 2vh;
+  }
+  .App-header h2{
+    font-size: 6vh;
+    line-height: 6vh;
+    margin:0px;
+  }
   .board{
-    width:75vh;
-    height:75vh;
+    width:60vh;
+    height:60vh;
   }
   .square{
-    width:25vh;
-    height: 25vh;
+    width:20vh;
+    height: 20vh;
   }
-  .square p{
-    height: 25vh;
+  .square h3{
+    font-size: 12vh;
+    line-height: 12vh;
+    margin:4vh auto;
   }
 }
 
 @media screen and (orientation:portrait) {
+  .App-header{
+    height: 10vw;
+    padding: 2vw;
+  }
+  .App-header h2{
+    font-size: 6vw;
+    line-height: 6vw;
+    margin:0px;
+  }
   .board{
-    width:75vw;
-    height:75vw;
+    width:60vw;
+    height:60vw;
   }
   .square{
-    width:25vw;
-    height: 25vw;
+    width:20vw;
+    height: 20vw;
   }
-  .square p{
-    height:25vw;
+  .square h3{
+    font-size: 12vw;
+    line-height: 12vw;
+    margin:4vw auto;
   }
 }
