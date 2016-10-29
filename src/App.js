@@ -37,6 +37,9 @@ const App = React.createClass ({
       state.messageShorthand = "compTurn";
     }
     this.setState(state);
+    if(icon==="O"){
+      this.computerPick();
+    }
   },
   userPick(i){
     let state = this.state;
