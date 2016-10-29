@@ -11,7 +11,7 @@ const App = React.createClass ({
       computerScore: 0,
       userIcon: undefined,
       playerTurn: undefined,
-      board: [0,0,0,0,0,0,0,1,-1],
+      board: [0,0,0,0,0,0,0,0,0],
       messageShorthand: "XorO",
       errorMessage: undefined,
     }
@@ -59,6 +59,8 @@ const App = React.createClass ({
         this.setState(state);
       }, 5000);
     }
+  },
+  computerPick(){
 
   },
   render() {
