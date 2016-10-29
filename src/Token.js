@@ -1,12 +1,19 @@
 import React from 'react';
 
-const Token = ({playerToken}) => {
+const Token = ({userIcon, playerToken}) => {
 	var token;
-	if(playerToken === 1){
+	// user is always playerToken 1; computer is always playerToken -1;
+	
+	// display X if user chose X and playerToken is 1 or if user chose O and playerToken is -1
+	if((playerToken === 1 && userIcon === "X") || (playerToken === -1 && userIcon === "O")){
 		token = "X";
 	}
-	else if(playerToken === -1){
+	
+	// display O if user chose O and playerToken is 1 or if user chose X and playerToken is -1
+	else if((playerToken === 1 && userIcon === "O") || (playerToken === -1 && userIcon === "X")){
 		token = "O";
+
+	// if no playerToken in a space, leave blank
 	}else{
 		token = " ";
 	}
