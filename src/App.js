@@ -11,7 +11,7 @@ const App = React.createClass ({
       computerScore: 0,
       userIcon: undefined,
       playerTurn: undefined,
-      board: [0,0,0,0,0,0,0,0,0],
+      board: [0,0,0,0,0,0,0,1,-1],
       messageShorthand: "XorO",
       errorMessage: undefined,
     }
@@ -66,6 +66,7 @@ const App = React.createClass ({
         />
         <Board 
           board={this.state.board} 
+          userIcon={this.state.userIcon}
           userPick={this.userPick} 
         />
         <ErrorMessage 
