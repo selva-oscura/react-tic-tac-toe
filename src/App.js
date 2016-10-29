@@ -24,7 +24,15 @@ const App = React.createClass ({
     }
   },
   updateUserIcon(icon){
-
+    console.log('updating user icon to', icon);
+    let state = this.state;
+    if(icon === "X"){
+      state.userIcon = "X";
+    }
+    if(icon === "O"){
+      state.userIcon = "O";
+    }
+    this.setState(state);
   },
   userPick(i){
     // console.log('userPick', i)
@@ -50,6 +58,7 @@ const App = React.createClass ({
         </div>
         <Message 
           messageShorthand={this.state.messageShorthand}
+          updateUserIcon={this.updateUserIcon}
         />
         <Board 
           board={this.state.board} 
