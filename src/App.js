@@ -28,9 +28,13 @@ const App = React.createClass ({
     let state = this.state;
     if(icon === "X"){
       state.userIcon = "X";
+      state.playerTurn = "userTurn";
+      state.messageShorthand = "userTurn";
     }
     if(icon === "O"){
       state.userIcon = "O";
+      state.playerTurn = "compTurn";
+      state.messageShorthand = "compTurn";
     }
     this.setState(state);
   },
