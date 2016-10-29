@@ -50,27 +50,33 @@ const App = React.createClass ({
     }else if(state.board[i]!==0){
       state.errorMessage = "That square already taken!";
     }else{
+      console.log('should not hit this until after select x or o')
       state.board[i]=1;
       state.playerTurn = "compTurn";
       state.messageShorthand = "compTurn";
       state.errorMessage = undefined;
+      this.setState(state);
+      this.computerPick();
+      return;
     }
     this.setState(state);
     if(state.errorMessage){
       setTimeout(() => {
         state.errorMessage = undefined; 
         this.setState(state);
-      }, 5000);
+      }, 3000);
     }
-    this.computerPick();
   },
   computerPick(){
     let state = this.state;
     let firstBlank = state.board.indexOf(0);
-    state.board[firstBlank] = -1;
-    state.playerTurn = "userTurn";
-    state.messageShorthand = "userTurn";
-    this.setState(state);
+    const timeout = Math.random()*1000+500;
+    setTimeout(() => {
+      state.board[firstBlank] = -1;
+      state.playerTurn = "userTurn";
+      state.messageShorthand = "userTurn";
+      this.setState(state);
+    }, timeout);
   },
   render() {
     console.log('this.state', this.state)
