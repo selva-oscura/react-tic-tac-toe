@@ -40,12 +40,12 @@ const App = React.createClass ({
   },
   userPick(i){
     let state = this.state;
-    if(state.board[i]!==0){
-      state.errorMessage = "That square already taken!"
-    }else if(state.userIcon===undefined){
-      state.errorMessage = "Please select X or O first"
+    if(state.userIcon===undefined){
+      state.errorMessage = "Please select X or O first.";
     }else if(state.playerTurn==="compTurn"){
-      state.errorMessage = "It is the computer's turn. Please wait."
+      state.errorMessage = "It is the computer's turn. Please wait.";
+    }else if(state.board[i]!==0){
+      state.errorMessage = "That square already taken!";
     }else{
       state.board[i]=1;
       state.playerTurn = "compTurn";
@@ -59,9 +59,15 @@ const App = React.createClass ({
         this.setState(state);
       }, 5000);
     }
+    this.computerPick();
   },
   computerPick(){
-
+    let state = this.state;
+    let firstBlank = state.board.indexOf(0);
+    state.board[firstBlank] = -1;
+    state.playerTurn = "userTurn";
+    state.messageShorthand = "userTurn";
+    this.setState(state);
   },
   render() {
     console.log('this.state', this.state)
