@@ -12,7 +12,7 @@ const App = React.createClass ({
       userIcon: undefined,
       playerTurn: undefined,
       board: [0,0,0,0,0,0,0,0,0],
-      messageShorthand: 0,
+      messageShorthand: "XorO",
       errorMessage: undefined,
     }
   },
@@ -31,6 +31,8 @@ const App = React.createClass ({
     let state = this.state;
     if(state.board[i]!==0){
       state.errorMessage = "That square already taken!"
+    }else if(state.userIcon===undefined){
+      state.errorMessage = "Please select X or O first"
     }else{
       state.board[i]=1;
       state.errorMessage = undefined;
