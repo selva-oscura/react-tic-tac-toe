@@ -39,22 +39,23 @@ const App = React.createClass ({
     this.setState(state);
   },
   userPick(i){
-    // console.log('userPick', i)
     let state = this.state;
     if(state.board[i]!==0){
       state.errorMessage = "That square already taken!"
     }else if(state.userIcon===undefined){
       state.errorMessage = "Please select X or O first"
+    }else if(state.playerTurn==="compTurn"){
+      state.errorMessage = "It is the computer's turn. Please wait."
     }else{
       state.board[i]=1;
+      state.playerTurn = "compTurn";
+      state.messageShorthand = "compTurn";
       state.errorMessage = undefined;
     }
     this.setState(state);
   },
   render() {
     console.log('this.state', this.state)
-    console.log('this.props', this.props)
-    console.log('this', this)
     return (
       <div className="App">
         <div className="App-header">
