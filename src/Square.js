@@ -1,14 +1,16 @@
 import React from 'react';
 import Token from './Token';
 
-const Square = ({value, i, userPick}) => (
+const Square = ({value, i, userIcon, userPick}) => (
 		<div className="square"
 			onClick={() => {
-				console.log('clicked', i);
 				userPick(i);
 			}
 		}>
-			<Token playerToken={value} />
+			<Token 
+				playerToken={value} 
+				userIcon={userIcon}
+			/>
 		</div>
 )
 
