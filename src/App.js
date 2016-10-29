@@ -53,6 +53,13 @@ const App = React.createClass ({
       state.errorMessage = undefined;
     }
     this.setState(state);
+    if(state.errorMessage){
+      setTimeout(() => {
+        state.errorMessage = undefined; 
+        this.setState(state);
+      }, 5000);
+    }
+
   },
   render() {
     console.log('this.state', this.state)
