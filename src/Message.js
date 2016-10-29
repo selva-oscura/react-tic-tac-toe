@@ -1,7 +1,6 @@
 import React from 'react';
 
 const Message = ({messageShorthand, updateUserIcon}) => {
-	console.log('messageShorthand', messageShorthand)
 	var messageContent;
 	switch(messageShorthand){
 		case "XorO":
@@ -10,7 +9,6 @@ const Message = ({messageShorthand, updateUserIcon}) => {
 					Play
 					<button
 						onClick={() => {
-							console.log('clicked x');
 							updateUserIcon("X");
 						}
 					}>
@@ -19,7 +17,6 @@ const Message = ({messageShorthand, updateUserIcon}) => {
 					or
 					<button
 						onClick={() => {
-							console.log('clicked x');
 							updateUserIcon("O");
 						}
 					}>
