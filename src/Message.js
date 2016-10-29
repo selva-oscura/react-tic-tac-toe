@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Message = ({messageShorthand}) => {
+const Message = ({messageShorthand, updateUserIcon}) => {
 	console.log('messageShorthand', messageShorthand)
 	var messageContent;
 	switch(messageShorthand){
@@ -8,16 +8,25 @@ const Message = ({messageShorthand}) => {
 			messageContent = (
 				<h3>
 					Play
-					<button>X</button>
+					<button
+						onClick={() => {
+							console.log('clicked x');
+							updateUserIcon("X");
+						}
+					}>
+						X
+					</button>
 					or
-					<button>O</button>
+					<button
+						onClick={() => {
+							console.log('clicked x');
+							updateUserIcon("O");
+						}
+					}>
+						O
+					</button>
 					?
 				</h3>
-			);
-			break;
-		case "compTurn":
-			messageContent = (
-				<h3>Computer's Turn</h3>
 			);
 			break;
 		case "userTurn":
@@ -25,7 +34,12 @@ const Message = ({messageShorthand}) => {
 				<h3>Your Turn</h3>
 			);
 			break;
-		case "XorO":
+		case "compTurn":
+			messageContent = (
+				<h3>Computer's Turn</h3>
+			);
+			break;
+		case "userWin":
 			messageContent = (
 				<h3>
 					Congratulations! You won!
@@ -33,7 +47,7 @@ const Message = ({messageShorthand}) => {
 				</h3>
 			);
 			break;
-		case "XorO":
+		case "tie":
 			messageContent = (
 				<h3>
 					Tie Game. 
@@ -41,7 +55,7 @@ const Message = ({messageShorthand}) => {
 				</h3>
 			);
 			break;
-		case "XorO":
+		case "userLoss":
 			messageContent = (
 				<h3>
 					The Computer won. 
@@ -51,7 +65,7 @@ const Message = ({messageShorthand}) => {
 			break;
 		default:
 			messageContent = (
-				<h3>Default</h3>
+				<h3>Erk....  default message....</h3>
 			);
 			break;
 	}
