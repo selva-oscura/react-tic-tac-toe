@@ -1,3 +1,6 @@
+*{
+  box-sizing: border-box;
+}
 body {
   margin: 0;
   padding: 0;
@@ -6,12 +9,94 @@ body {
 	font-size: 2em;
 }
 
-h1, h2, h3, h4{
+h1, h2, h3, h4, .message button{
 	font-family: 'Shojumaru', cursive;
 }
-p, h5, h6, ul, li{
-}
-
 .game-piece{
 	font-family: 'Shojumaru', cursive;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #222;
+  color: white;
+}
+
+.message button{
+	font-size: 1em;
+	border:.1em solid black;
+	margin: 0px 12px;
+	padding: .2em .4em;
+	border-radius: .25em;
+	box-shadow: 0em .1em .1em silver;
+	transition: 1s ease;
+}
+
+.message button:hover{
+	box-shadow: 0em .15em .25em silver;	
+}
+
+.board{
+  box-shadow: 0px 0px 8px silver;
+  margin: 5vh auto;
+}
+
+.square{
+  float:left;
+}
+.message button{
+  background-color: white;
+}
+
+@media screen and (orientation:landscape) {
+  .App-header{
+    height: 10vh;
+    padding: 2vh;
+  }
+  .App-header h2{
+    font-size: 6vh;
+    line-height: 6vh;
+    margin:0px;
+  }
+  .board{
+    width:60vh;
+    height:60vh;
+  }
+  .square{
+    width:20vh;
+    height: 20vh;
+  }
+  .square h3{
+    font-size: 12vh;
+    line-height: 12vh;
+    margin:4vh auto;
+  }
+}
+
+@media screen and (orientation:portrait) {
+  .App-header{
+    height: 10vw;
+    padding: 2vw;
+  }
+  .App-header h2{
+    font-size: 6vw;
+    line-height: 6vw;
+    margin:0px;
+  }
+  .board{
+    width:60vw;
+    height:60vw;
+  }
+  .square{
+    width:20vw;
+    height: 20vw;
+  }
+  .square h3{
+    font-size: 12vw;
+    line-height: 12vw;
+    margin:4vw auto;
+  }
 }
