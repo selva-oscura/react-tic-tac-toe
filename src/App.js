@@ -86,6 +86,12 @@ const App = React.createClass ({
     let state = this.state;
     if(state.userIcon===undefined){
       state.errorMessage = "Please select X or O first.";
+    }else if(state.messageShorthand==="userWin"){
+      state.errorMessage = "Game Already Over. (You won!)";
+    }else if(state.messageShorthand === "compWin"){
+      state.errorMessage = "Game Already Over. (Computer won.)";
+    }else if(state.messageShorthand==="tie"){
+      state.errorMessage = "Game Over. (It was a tie.)";
     }else if(state.playerTurn==="compTurn"){
       state.errorMessage = "It is the computer's turn. Please wait.";
     }else if(state.board[i]!==0){
