@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Message = ({messageShorthand, updateUserIcon}) => {
+const Message = ({messageShorthand, updateUserIcon, playAgain}) => {
 	var messageContent;
 	switch(messageShorthand){
 		case "XorO":
@@ -28,19 +28,25 @@ const Message = ({messageShorthand, updateUserIcon}) => {
 			break;
 		case "userTurn":
 			messageContent = (
-				<h3>Your Turn</h3>
+				<h3 className="left-align">Your Turn</h3>
 			);
 			break;
 		case "compTurn":
 			messageContent = (
-				<h3>Computer's Turn</h3>
+				<h3 className="right-align">Computer's Turn</h3>
 			);
 			break;
 		case "userWin":
 			messageContent = (
 				<h3>
 					Congratulations! You won!
-					<button>Play Again?</button>
+					<button
+						onClick={() => {
+							playAgain();
+						}
+					}>
+						Play Again?
+					</button>
 				</h3>
 			);
 			break;
@@ -48,7 +54,13 @@ const Message = ({messageShorthand, updateUserIcon}) => {
 			messageContent = (
 				<h3>
 					Tie Game. 
-					<button>Play Again?</button>
+					<button
+						onClick={() => {
+							playAgain();
+						}
+					}>
+						Play Again?
+					</button>
 				</h3>
 			);
 			break;
@@ -56,7 +68,13 @@ const Message = ({messageShorthand, updateUserIcon}) => {
 			messageContent = (
 				<h3>
 					The Computer won. 
-					<button>Play Again?</button>
+					<button
+						onClick={() => {
+							playAgain();
+						}
+					}>
+						Play Again?
+					</button>
 				</h3>
 			);
 			break;
