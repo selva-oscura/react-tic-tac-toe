@@ -39,7 +39,7 @@ const Message = ({messageShorthand, updateUserIcon, playAgain}) => {
 		case "userWin":
 			messageContent = (
 				<h3>
-					Congratulations! You won!
+					Congrats! You won!<br />
 					<button
 						onClick={() => {
 							playAgain();
