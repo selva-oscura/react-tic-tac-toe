@@ -73,7 +73,6 @@ const App = React.createClass ({
     return winner;
   },
   updateUserIcon(icon){
-    console.log('updating user icon to', icon);
     let state = this.state;
     if(icon === "X"){
       state.userIcon = "X";
@@ -155,6 +154,7 @@ const App = React.createClass ({
         <Message 
           messageShorthand={this.state.messageShorthand}
           updateUserIcon={this.updateUserIcon}
+          playAgain={this.playAgain}
         />
         <Board 
           board={this.state.board} 
