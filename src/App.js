@@ -16,12 +16,40 @@ const App = React.createClass ({
       errorMessage: undefined,
     }
   },
-  updateScore(winner){
-    if(winner==="user"){
-
-    }else{
-
+  checkGameWon(){
+    const winningSolutions = [
+      [0,1,2],
+      [3,4,5],
+      [6,7,8],
+      [0,3,6],
+      [1,4,7],
+      [2,5,8],
+      [0,4,8],
+      [2,4,6]
+    ];
+    const board = this.state.board;
+    // check for computer or user win
+    let winner = false;
+    for (let i = 0; i<winningSolutions.length; i++){
+      let sum = 0;
+      let possibleSolution = winningSolutions[i];
+      for(let j=0; j<possibleSolution.length; j++){
+        sum += board[possibleSolution[j]];
+      }
+      // check for user win
+      if(sum === 3){
+        winner = "user";
+        break;  
+      // check for computer win
+      }else if(sum === -3){
+        winner = "comp";
+        break;
+      }
     }
+    if(!winner && board.indexOf(0)===-1){
+      winner = "tie";
+    }
+    return winner;
   },
   updateUserIcon(icon){
     console.log('updating user icon to', icon);
@@ -50,14 +78,19 @@ const App = React.createClass ({
     }else if(state.board[i]!==0){
       state.errorMessage = "That square already taken!";
     }else{
-      console.log('should not hit this until after select x or o')
       state.board[i]=1;
-      state.playerTurn = "compTurn";
-      state.messageShorthand = "compTurn";
-      state.errorMessage = undefined;
       this.setState(state);
-      this.computerPick();
-      return;
+      let winner = this.checkGameWon();
+      if(winner){
+        return;
+      }else{
+        state.playerTurn = "compTurn";
+        state.messageShorthand = "compTurn";
+        state.errorMessage = undefined;
+        this.setState(state);
+        this.computerPick();
+        return;
+      }
     }
     this.setState(state);
     if(state.errorMessage){
@@ -73,9 +106,14 @@ const App = React.createClass ({
     const timeout = Math.random()*1000+500;
     setTimeout(() => {
       state.board[firstBlank] = -1;
-      state.playerTurn = "userTurn";
-      state.messageShorthand = "userTurn";
       this.setState(state);
+      let winner = this.checkGameWon();
+      if(winner){
+      }else{
+        state.playerTurn = "userTurn";
+        state.messageShorthand = "userTurn";
+        this.setState(state);
+      }
     }, timeout);
   },
   render() {
