@@ -16,6 +16,14 @@ const App = React.createClass ({
       errorMessage: undefined,
     }
   },
+  playAgain(){
+    let state = this.state;
+    state.userIcon = undefined;
+    state.playerTurn = undefined;
+    state.board = [0,0,0,0,0,0,0,0,0];
+    state.messageShorthand = "XorO";
+    this.setState(state);
+  },
   concludeGame(winner){
     let state = this.state;
     if(winner==="user"){
