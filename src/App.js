@@ -16,6 +16,19 @@ const App = React.createClass ({
       errorMessage: undefined,
     }
   },
+  concludeGame(winner){
+    let state = this.state;
+    if(winner==="user"){
+      state.userScore += 10;
+      state.messageShorthand = "userWin";
+    }else if(winner==="comp"){
+      state.computerScore += 10;
+      state.messageShorthand = "compWin";
+    }else{
+      state.messageShorthand = "tie";
+    }
+    this.setState(state);
+  },
   checkGameWon(){
     const winningSolutions = [
       [0,1,2],
@@ -82,6 +95,7 @@ const App = React.createClass ({
       this.setState(state);
       let winner = this.checkGameWon();
       if(winner){
+        this.concludeGame(winner);
         return;
       }else{
         state.playerTurn = "compTurn";
@@ -109,6 +123,7 @@ const App = React.createClass ({
       this.setState(state);
       let winner = this.checkGameWon();
       if(winner){
+        this.concludeGame(winner);
       }else{
         state.playerTurn = "userTurn";
         state.messageShorthand = "userTurn";
