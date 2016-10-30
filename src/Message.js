@@ -52,7 +52,7 @@ const Message = ({messageShorthand, updateUserIcon}) => {
 				</h3>
 			);
 			break;
-		case "userLoss":
+		case "compWin":
 			messageContent = (
 				<h3>
 					The Computer won. 
