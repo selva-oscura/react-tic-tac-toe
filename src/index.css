@@ -20,6 +20,13 @@ h1, h2, h3, h4, .message button{
   text-align: right;
 }
 
+.left{
+  float:left;
+}
+.right{
+  float:right;
+}
+
 .App {
   text-align: center;
 }
@@ -36,11 +43,12 @@ h1, h2, h3, h4, .message button{
 	padding: .2em .4em;
 	border-radius: .25em;
 	box-shadow: 0em .1em .1em silver;
-	transition: 1s ease;
+	transition: box-shadow .75s ease;
+  background-color: white;
 }
 
 .message button:hover{
-	box-shadow: 0em .15em .25em silver;	
+  box-shadow: 0em .15em .3em gray; 
 }
 
 .message button:focus{
@@ -49,14 +57,10 @@ h1, h2, h3, h4, .message button{
 
 .board{
   box-shadow: 0px 0px 8px silver;
-  margin: 5vh auto;
 }
 
 .square{
   float:left;
-}
-.message button{
-  background-color: white;
 }
 
 @media screen and (orientation:landscape) {
@@ -69,27 +73,51 @@ h1, h2, h3, h4, .message button{
     line-height: 6vh;
     margin:0px;
   }
+
+  .scores{
+    height:8vh;
+    width: 96vh;
+    padding:2vh 0vh 0vh 0vh;
+    margin:0vh auto;
+  }
+  .scores h4{
+    font-size: 3vh;
+    padding:0vh;
+    margin:0vh;
+  }
+
   .message{
-    height: 15vh;
-    width: 60vh;
-    padding:1vh 0vh;
+    height: 14vh;
+    width: 54vh;
+    padding:0vh;
     margin:0px auto;
   }
   .message h3{
-    font-size: 4vh;
+    font-size: 3.6vh;
   }
+
   .board{
-    width:60vh;
-    height:60vh;
+    width:54vh;
+    height:54vh;
+    margin: 2vh auto 1vh auto;
   }
   .square{
-    width:20vh;
-    height: 20vh;
+    width:18vh;
+    height: 18vh;
   }
   .square h3{
     font-size: 12vh;
     line-height: 12vh;
-    margin:4vh auto;
+    margin:3vh auto;
+  }
+
+  .error{
+    height: 4vh;
+  }
+  .error p{
+    font-size: 3vh;
+    padding: 1vh 0vh 0vh 0vh;
+    margin:0vh;
   }
 }
 
@@ -103,26 +131,50 @@ h1, h2, h3, h4, .message button{
     line-height: 6vw;
     margin:0px;
   }
+
+  .scores{
+    height:8vw;
+    width: 96vw;
+    padding:2vw 0vw 0vw 0vw;
+    margin:0vw auto;
+  }
+  .scores h4{
+    font-size: 3vw;
+    padding:0vw;
+    margin:0vw;
+  }
+
   .message{
-    height: 15vw;
-    width: 60vw;
-    padding: 1vw 0vw;
+    height: 14vw;
+    width: 54vw;
+    padding: 0vw;
     margin:0px auto;
   }
   .message h3{
-    font-size: 4vw;
+    font-size: 3.6vw;
   }
+
   .board{
-    width:60vw;
-    height:60vw;
+    width:54vw;
+    height:54vw;
+    margin: 2vw auto 1vw auto;
   }
   .square{
-    width:20vw;
-    height: 20vw;
+    width:18vw;
+    height: 18vw;
   }
   .square h3{
     font-size: 12vw;
     line-height: 12vw;
-    margin:4vw auto;
+    margin:3vw auto;
+  }
+
+  .error{
+    height: 4vw;
+  }
+  .error p{
+    font-size: 3vw;
+    padding: 1vw 0vw 0vw 0vw;
+    margin:0vw;
   }
 }
