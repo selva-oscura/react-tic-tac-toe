@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Message from './Message';
+import Scores from './Scores';
 import Board from './Board';
 import ErrorMessage from './ErrorMessage';
 
@@ -151,6 +152,10 @@ const App = React.createClass ({
         <div className="App-header">
           <h2>Tic-Tac-Toe</h2>
         </div>
+        <Scores
+          userScore={this.state.userScore}
+          computerScore={this.state.computerScore}
+        />
         <Message 
           messageShorthand={this.state.messageShorthand}
           updateUserIcon={this.updateUserIcon}
