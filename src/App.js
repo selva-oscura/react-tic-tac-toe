@@ -79,14 +79,13 @@ const App = React.createClass ({
       state.userIcon = "X";
       state.playerTurn = "userTurn";
       state.messageShorthand = "userTurn";
+      this.setState(state);
     }
     if(icon === "O"){
       state.userIcon = "O";
       state.playerTurn = "compTurn";
       state.messageShorthand = "compTurn";
-    }
-    this.setState(state);
-    if(icon==="O"){
+      this.setState(state);
       this.computerPick();
     }
   },
@@ -119,13 +118,6 @@ const App = React.createClass ({
         this.computerPick();
         return;
       }
-    }
-    this.setState(state);
-    if(state.errorMessage){
-      setTimeout(() => {
-        state.errorMessage = undefined; 
-        this.setState(state);
-      }, 3000);
     }
   },
   computerPick(){
