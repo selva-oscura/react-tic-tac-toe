@@ -19,12 +19,15 @@ const App = React.createClass ({
   },
   winningSolutions(){
     return [
+      // rows
       [0,1,2],
       [3,4,5],
       [6,7,8],
+      // columns
       [0,3,6],
       [1,4,7],
       [2,5,8],
+      // diagonals
       [0,4,8],
       [2,4,6]
     ];
@@ -104,6 +107,26 @@ const App = React.createClass ({
     }
     return targetSquares;
   },
+  getSideSquare(){
+    const sideSquares = [7, 1, 3, 5];
+    const board = this.state.board;
+    for(let i =0; i<sideSquares.length; i++){
+      if(board[sideSquares[i]]===0){
+        return sideSquares[i];
+      }
+    }
+    return null;
+  },
+  getCornerSquare(){
+    const cornerSquares = [0, 6, 2, 8];
+    const board = this.state.board;
+    for(let i =0; i<cornerSquares.length; i++){
+      if(board[cornerSquares[i]]===0){
+        return cornerSquares[i];
+      }
+    }
+    return null;
+  },
   updateUserIcon(icon){
     let state = this.state;
     state.errorMessage = undefined;
@@ -168,57 +191,17 @@ const App = React.createClass ({
     }else if(state.board[4]===0){
       targetSquare = 4;
     // prevent opposite corners picked by opponent with adjacent corner as next pick leading to automatic win by opponent
-    }else if(state.board[0]===1 && state.board[8]===1){
-      if(state.board[1]!==-1 && state.board[2]!==-1 && state.board[5]!==-1){
-        if(state.board[1]===0){
-          targetSquare = 1;
-        }else if(state.board[5]===0){
-          targetSquare = 5;
-        }else if(state.board[2]===0){
-          targetSquare = 2;
-        }
-      }else if(state.board[7]!==-1 && state.board[6]!==-1 && state.board[3]!==-1){
-        if(state.board[7]===0){
-          targetSquare = 7;
-        }else if(state.board[3]===0){
-          targetSquare = 3;
-        }else if(state.board[6]===0){
-          targetSquare = 6;
-        }
-      }
-    // prevent opposite corners picked by opponent with adjacent corner as next pick leading to automatic win by opponent
-    }else if(state.board[2]===1 && state.board[6]===1){
-      if(state.board[1]!==-1 && state.board[0]!==-1 && state.board[3]!==-1){
-        if(state.board[1]===0){
-          targetSquare = 1;
-        }else if(state.board[3]===0){
-          targetSquare = 3;
-        }else if(state.board[0]===0){
-          targetSquare = 0;
-        }
-      }else if(state.board[5]!==-1 && state.board[8]!==-1 && state.board[7]!==-1){
-        if(state.board[5]===0){
-          targetSquare = 5;
-        }else if(state.board[7]===0){
-          targetSquare = 7;
-        }else if(state.board[8]===0){
-          targetSquare = 8;
-        }
+    }else if((state.board[0]===1 && state.board[8]===1) || (state.board[2]===1 && state.board[6]===1)){
+      targetSquare = this.getSideSquare();
+      if(targetSquare === null){
+        targetSquare = this.getCornerSquare();
       }
     }else{
       // pick corner if available
-      [0, 2, 6, 8].forEach(function(spot){ 
-        if(state.board[spot] === 0 ){
-          targetSquare = spot;
-        }
-      });
-      if(targetSquare===undefined){
+      targetSquare = this.getCornerSquare();
+      if(targetSquare===null){
         // else pick side
-        [1, 7, 3, 5].forEach(function(spot){ 
-          if(state.board[spot] === 0 ){
-            targetSquare = spot;
-          }
-        });
+        targetSquare = this.getSideSquare();
       }
     }
     const timeout = Math.random()*500+250;
