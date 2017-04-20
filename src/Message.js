@@ -54,7 +54,7 @@ const Message = ({messageShorthand, updateUserIcon, playAgain}) => {
 		case "tie":
 			messageContent = (
 				<h3>
-					Tie Game. 
+					Tie Game. <br />
 					<button
 						onClick={() => {
 							playAgain();
@@ -68,7 +68,7 @@ const Message = ({messageShorthand, updateUserIcon, playAgain}) => {
 		case "compWin":
 			messageContent = (
 				<h3>
-					The Computer won. 
+					The Computer won. <br />
 					<button
 						onClick={() => {
 							playAgain();
@@ -81,7 +81,7 @@ const Message = ({messageShorthand, updateUserIcon, playAgain}) => {
 			break;
 		default:
 			messageContent = (
-				<h3>Erk....  default message....</h3>
+				<h3>Erk....  default message....  A mistake somewhere....</h3>
 			);
 			break;
 	}
