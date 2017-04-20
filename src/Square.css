@@ -1,0 +1,27 @@
+.square{
+  float:left;
+}
+
+@media screen and (orientation:landscape) {
+  .square{
+    width:18vh;
+    height: 18vh;
+  }
+  .square h3{
+    font-size: 12vh;
+    line-height: 12vh;
+    margin:3vh auto;
+  }
+}
+
+@media screen and (orientation:portrait) {
+  .square{
+    width:18vw;
+    height: 18vw;
+  }
+  .square h3{
+    font-size: 12vw;
+    line-height: 12vw;
+    margin:3vw auto;
+  }
+}
