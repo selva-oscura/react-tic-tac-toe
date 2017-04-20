@@ -1,0 +1,20 @@
+.board{
+  background: url("../public/tic-tac-toe.png");
+  background-size: contain;
+}
+
+@media screen and (orientation:landscape) {
+  .board{
+    width:54vh;
+    height:54vh;
+    margin: 2vh auto 1vh auto;
+  }
+}
+
+@media screen and (orientation:portrait) {
+  .board{
+    width:54vw;
+    height:54vw;
+    margin: 2vw auto 1vw auto;
+  }
+}
