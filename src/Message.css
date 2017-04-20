@@ -34,11 +34,11 @@
   .message{
 		height: 18vw;
 		width: 70vw;
-    padding: 2vw;
+    padding: 2vw 0vw;
     margin:0px auto;
   }
   .message h3{
-    font-size: 4.8vw;
+    font-size: 4.2vw;
   }
 }
 
