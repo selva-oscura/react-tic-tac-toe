@@ -1,0 +1,36 @@
+.error-message{
+  color: #d50000;
+}
+
+.error-message p{
+  font-weight: bold;
+}
+
+@media screen and (orientation:landscape) {
+  .error-message{
+    height: 4vh;
+  }
+  .error-message p{
+    font-size: 3.5vh;
+    font-weight: bold;
+    padding: 1vh 0vh 0vh 0vh;
+    margin:0vh;
+  }
+}
+
+@media screen and (orientation:portrait) {
+  .error-message{
+    height: 6vw;
+  }
+  .error-message p{
+    font-size: 5vw;
+    padding: 1vw 0vw 0vw 0vw;
+    margin:0vw;
+  }
+}
+
+@media screen and (max-aspect-ratio:3/4){
+  .error-message p{
+    font-size: 6vw;
+  }
+}

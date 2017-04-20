@@ -1,0 +1,54 @@
+.message button{
+	font-size: 1em;
+	border:.1em solid black;
+	margin: 0px 12px;
+	padding: .2em .4em;
+	border-radius: .25em;
+	box-shadow: 0em .1em .1em rgba(0,0,0,.2);
+	transition: box-shadow .75s ease;
+  background-color: black;
+  color: #ffeb3b;
+}
+
+.message button:hover{
+  box-shadow: 0em .15em .3em rgba(0,0,0,.5);; 
+}
+
+.message button:focus{
+  outline: -webkit-focus-ring-color none 0px;
+}
+
+@media screen and (orientation:landscape) {
+  .message{
+    height: 14vh;
+    width: 54vh;
+    padding:0vh;
+    margin:0px auto;
+  }
+  .message h3{
+    font-size: 3.6vh;
+  }
+}
+
+@media screen and (orientation:portrait) {
+  .message{
+		height: 18vw;
+		width: 70vw;
+    padding: 2vw;
+    margin:0px auto;
+  }
+  .message h3{
+    font-size: 4.8vw;
+  }
+}
+
+@media screen and (max-aspect-ratio:3/4){
+	.message{
+    height: 33vw;
+		width: 100vw;
+		padding: 3vw;
+	}
+  .message h3{
+    font-size: 6.4vw;
+  }
+}
