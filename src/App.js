@@ -8,8 +8,11 @@ import ErrorMessage from './ErrorMessage';
 const App = React.createClass ({
   getInitialState(){
     return {
-      userScore: 0,
-      computerScore: 0,
+      scores: {      
+        userWins: 0,
+        computerWins: 0,
+        ties: 0,
+      },
       userIcon: undefined,
       playerTurn: undefined,
       board: [0,0,0,0,0,0,0,0,0],
@@ -42,17 +45,18 @@ const App = React.createClass ({
     this.setState(state);
   },
   concludeGame(winner){
-    let state = this.state;
+    let {scores, messageShorthand} = this.state;
     if(winner==="user"){
-      state.userScore += 10;
-      state.messageShorthand = "userWin";
+      scores.userWins += 1;
+      messageShorthand = "userWin";
     }else if(winner==="comp"){
-      state.computerScore += 10;
-      state.messageShorthand = "compWin";
+      scores.computerWins += 1;
+      messageShorthand = "compWin";
     }else{
-      state.messageShorthand = "tie";
+      scores.ties += 1;
+      messageShorthand = "tie";
     }
-    this.setState(state);
+    this.setState({scores, messageShorthand});
   },
   checkGameWon(){
     const winningSolutions = this.winningSolutions();
@@ -225,8 +229,7 @@ const App = React.createClass ({
           <h2>Tic-Tac-Toe</h2>
         </div>
         <Scores
-          userScore={this.state.userScore}
-          computerScore={this.state.computerScore}
+          scores={this.state.scores}
         />
         <Message 
           messageShorthand={this.state.messageShorthand}
