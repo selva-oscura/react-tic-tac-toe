@@ -1,3 +1,18 @@
+.scores{
+  display: flex;
+  flex-direction: row;
+}
+
+.scores div{
+  width: 33%;
+}
+
+.scores h4{
+  padding:0;
+  margin:0;
+}
+
+
 @media screen and (orientation:landscape) {
   .scores{
     height:8vh;
@@ -7,35 +22,26 @@
   }
   .scores h4{
     font-size: 3vh;
-    padding:0vh;
-    margin:0vh;
   }
 }
 
 @media screen and (orientation:portrait) {
   .scores{
-    height:10vw;
+    height:9vw;
     width: 96vw;
-    padding:2vw 0vw 0vw 0vw;
+    padding:1vw 0vw 0vw 0vw;
     margin:0vw auto;
   }
   .scores h4{
     font-size: 4.2vw;
-    padding:0vw;
-    margin:0vw;
   }
 }
 
 @media screen and (max-aspect-ratio:3/4){
   .scores{
     height:15vw;
-    width: 96vw;
-    padding:2vw 0vw 0vw 0vw;
-    margin:0vw auto;
   }
   .scores h4{
     font-size: 4.8vw;
-    padding:0vw;
-    margin:0vw;
   }
 }
