@@ -1,4 +1,5 @@
 import React from 'react';
+import './Scores.css';
 
 const Scores = ({userScore, computerScore}) => (
 	<div className="scores">		
