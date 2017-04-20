@@ -13,8 +13,24 @@
 
 @media screen and (orientation:portrait) {
   .board{
-    width:54vw;
-    height:54vw;
+    width:51vw;
+    height:51vw;
+    margin: 5vw auto 1vw auto;
+  }
+}
+
+@media screen and (max-aspect-ratio:3/4){
+  .board{
+    width:66vw;
+    height:66vw;
     margin: 2vw auto 1vw auto;
+  }
+}
+
+@media screen and (max-aspect-ratio:9/16){
+  .board{
+    width:90vw;
+    height:90vw;
+    margin: 4vw auto 4vw auto;
   }
 }
