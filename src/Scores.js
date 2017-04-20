@@ -1,18 +1,24 @@
 import React from 'react';
 import './Scores.css';
 
-const Scores = ({userScore, computerScore}) => (
+const Scores = ({scores}) => (
 	<div className="scores">		
-			<div className="left">
+			<div>
 				<h4>
 					Player<br />
-					{userScore}
-					</h4>
+					{scores.userWins}
+				</h4>
 			</div>
-			<div className="right">
+			<div>
+				<h4>
+					Ties<br />
+					{scores.ties}
+				</h4>
+			</div>
+			<div>
 				<h4>
 					Computer<br />
-					{computerScore}
+					{scores.computerWins}
 				</h4>
 			</div>
 	</div>
