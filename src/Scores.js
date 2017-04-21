@@ -1,27 +1,22 @@
 import React from 'react';
+import Score from './Score';
 import './Scores.css';
 
 const Scores = ({scores}) => (
-	<div className="scores">		
-			<div>
-				<h4>
-					Player<br />
-					{scores.userWins}
-				</h4>
-			</div>
-			<div>
-				<h4>
-					Ties<br />
-					{scores.ties}
-				</h4>
-			</div>
-			<div>
-				<h4>
-					Computer<br />
-					{scores.computerWins}
-				</h4>
-			</div>
+	<div className="scores">
+		<Score 
+			label="Player"
+			score={scores.userWins}
+		/>
+		<Score 
+			label="Ties"
+			score={scores.ties}
+		/>
+		<Score 
+			label="Computer"
+			score={scores.computerWins}
+		/>
 	</div>
-)
+);
 
 export default Scores;
