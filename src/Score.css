@@ -1,0 +1,32 @@
+.scores{
+  display: flex;
+  flex-direction: row;
+}
+
+.score{
+  width: 33%;
+}
+
+.score h4{
+  padding:0;
+  margin:0;
+}
+
+
+@media screen and (orientation:landscape) {
+  .score h4{
+    font-size: 3vh;
+  }
+}
+
+@media screen and (orientation:portrait) {
+  .score h4{
+    font-size: 4.2vw;
+  }
+}
+
+@media screen and (max-aspect-ratio:3/4){
+  .score h4{
+    font-size: 4.8vw;
+  }
+}
