@@ -3,25 +3,12 @@
   flex-direction: row;
 }
 
-.scores div{
-  width: 33%;
-}
-
-.scores h4{
-  padding:0;
-  margin:0;
-}
-
-
 @media screen and (orientation:landscape) {
   .scores{
     height:8vh;
     width: 96vh;
     padding:2vh 0vh 0vh 0vh;
     margin:0vh auto;
-  }
-  .scores h4{
-    font-size: 3vh;
   }
 }
 
@@ -32,16 +19,10 @@
     padding:1vw 0vw 0vw 0vw;
     margin:0vw auto;
   }
-  .scores h4{
-    font-size: 4.2vw;
-  }
 }
 
 @media screen and (max-aspect-ratio:3/4){
   .scores{
     height:15vw;
-  }
-  .scores h4{
-    font-size: 4.8vw;
   }
 }
