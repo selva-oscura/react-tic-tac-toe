@@ -1,0 +1,13 @@
+{
+  "name": "Tic-Tac-Toe with React.js",
+  "short_name": "Tic-Tac-Toe",
+  "icons": [{
+      "src": "public/tic-tac-toe.png",
+      "sizes": "400x400",
+      "type": "image/png"
+    }],
+  "start_url": "public/index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000"
+}
