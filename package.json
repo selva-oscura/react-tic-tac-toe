@@ -1,9 +1,21 @@
 {
-  "name": "react-tic-tac-toe",
+  "name": "tic-tac-toe",
   "version": "0.0.1",
+  "description": "Tic-Tac-Toe",
+  "homepage": "https://selva-oscura.github.io/react-tic-tac-toe",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/selva-oscura/react-tic-tac-toe.git"
+  },
+  "author": "Carol  St. Louis",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/selva-oscura/react-tic-tac-toe/issues"
+  },
   "private": true,
   "devDependencies": {
-    "react-scripts": "0.7.0"
+    "react-scripts": "0.7.0",
+    "sw-precache": "^5.1.0"
   },
   "dependencies": {
     "react": "^15.3.2",
@@ -11,7 +23,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && cp manifest.json build/ && sw-precache --root='build/' --static-file-globs='build/**/!(*map*)'",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }
