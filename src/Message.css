@@ -42,7 +42,7 @@
   }
 }
 
-@media screen and (max-aspect-ratio:3/4){
+@media screen and (max-aspect-ratio:2/3){
 	.message{
     height: 33vw;
 		width: 100vw;

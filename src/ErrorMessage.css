@@ -29,7 +29,7 @@
   }
 }
 
-@media screen and (max-aspect-ratio:3/4){
+@media screen and (max-aspect-ratio:2/3){
   .error-message p{
     font-size: 6vw;
   }
