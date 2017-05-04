@@ -1,12 +1,19 @@
 {
-  "name": "tic-tac-toe",
+  "name": "Tic-Tac-Toe",
   "version": "0.0.1",
-  "description": "Tic-Tac-Toe",
+  "description": "Tic-Tac-Toe -- Progressive Web App, made with node, React, service workers, and storage of state and app shell in the browser",
   "homepage": "https://selva-oscura.github.io/react-tic-tac-toe",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/selva-oscura/react-tic-tac-toe.git"
   },
+  "keywords": [
+    "JS",
+    "React",
+    "create-react-app",
+    "PWA",
+    "sw-precache"
+  ],
   "author": "Carol  St. Louis",
   "license": "MIT",
   "bugs": {
@@ -14,8 +21,9 @@
   },
   "private": true,
   "devDependencies": {
+    "gh-pages": "^0.12.0",
     "react-scripts": "0.7.0",
-    "sw-precache": "^5.1.0"
+    "sw-precache": "^4.2.2"
   },
   "dependencies": {
     "react": "^15.3.2",
