@@ -1,13 +1,32 @@
 {
-  "name": "Tic-Tac-Toe with React.js",
+  "name": "Tic-Tac-Toe",
   "short_name": "Tic-Tac-Toe",
-  "icons": [{
-      "src": "public/tic-tac-toe.png",
-      "sizes": "400x400",
+  "icons": [
+    {
+    "src": "./img/tic-tac-toe-128x128.png",
+      "sizes": "128x128",
       "type": "image/png"
-    }],
+    }, {
+      "src": "./img/tic-tac-toe-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    }, {
+      "src": "./img/tic-tac-toe-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png"
+    }, {
+      "src": "./img/tic-tac-toe-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }, {
+      "src": "./img/tic-tac-toe-256x256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    }
+  ],
   "start_url": "public/index.html",
-  "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#000000"
+  "theme_color": "#ffeb3b",
+  "background_color": "#ffeb3b",
+  "orientation": "any",
+  "display": "standalone"
 }
