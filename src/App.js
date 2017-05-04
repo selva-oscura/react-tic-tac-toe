@@ -7,18 +7,26 @@ import ErrorMessage from './ErrorMessage';
 
 const App = React.createClass ({
   getInitialState(){
-    return {
-      scores: {      
-        userWins: 0,
-        computerWins: 0,
-        ties: 0,
-      },
-      userIcon: undefined,
-      playerTurn: undefined,
-      board: [0,0,0,0,0,0,0,0,0],
-      messageShorthand: "XorO",
-      errorMessage: undefined,
+    let ticTacToeData = localStorage.ticTacToeData;
+    if(ticTacToeData){
+      ticTacToeData = JSON.parse(ticTacToeData);
+      ticTacToeData.errorMessage = undefined;
+    }else{    
+      ticTacToeData = {
+        scores: {      
+          userWins: 0,
+          computerWins: 0,
+          ties: 0,
+        },
+        userIcon: undefined,
+        playerTurn: undefined,
+        board: [0,0,0,0,0,0,0,0,0],
+        messageShorthand: "XorO",
+        errorMessage: undefined,
+      }
     }
+    localStorage.ticTacToeData = JSON.stringify(ticTacToeData);
+    return ticTacToeData;
   },
   winningSolutions(){
     return [
@@ -42,28 +50,31 @@ const App = React.createClass ({
     state.board = [0,0,0,0,0,0,0,0,0];
     state.messageShorthand = "XorO";
     state.errorMessage = undefined;
+    localStorage.ticTacToeData = JSON.stringify(state);
     this.setState(state);
   },
   concludeGame(winner){
-    let {scores, messageShorthand} = this.state;
+    let state = this.state;
     if(winner==="user"){
-      scores.userWins += 1;
-      messageShorthand = "userWin";
+      state.scores.userWins += 1;
+      state.messageShorthand = "userWin";
     }else if(winner==="comp"){
-      scores.computerWins += 1;
-      messageShorthand = "compWin";
+      state.scores.computerWins += 1;
+      state.messageShorthand = "compWin";
     }else{
-      scores.ties += 1;
-      messageShorthand = "tie";
+      state.scores.ties += 1;
+      state.messageShorthand = "tie";
     }
-    this.setState({scores, messageShorthand});
+    state.playerTurn = undefined;
+    localStorage.ticTacToeData = JSON.stringify(state);
+    this.setState(state);
   },
   checkGameWon(){
     const winningSolutions = this.winningSolutions();
     const board = this.state.board;
     // check for computer or user win
     let winner = false;
-    for (let i = 0; i<winningSolutions.length; i++){
+    for(let i = 0; i<winningSolutions.length; i++){
       let sum = 0;
       let possibleSolution = winningSolutions[i];
       for(let j=0; j<possibleSolution.length; j++){
@@ -112,9 +123,14 @@ const App = React.createClass ({
     return targetSquares;
   },
   getSideSquare(){
-    const sideSquares = [7, 1, 3, 5];
+    let sideSquares = [1, 3, 5, 7];
     const board = this.state.board;
-    for(let i =0; i<sideSquares.length; i++){
+    let rand = Math.floor(Math.random()*8);
+    if(rand%2===0){
+      sideSquares = sideSquares.reverse();
+    }
+    sideSquares = sideSquares.slice(rand%4).concat(sideSquares.slice(0, rand%4));
+    for(let i = 0; i<sideSquares.length; i++){
       if(board[sideSquares[i]]===0){
         return sideSquares[i];
       }
@@ -122,7 +138,12 @@ const App = React.createClass ({
     return null;
   },
   getCornerSquare(){
-    const cornerSquares = [0, 6, 2, 8];
+    let cornerSquares = [0, 2, 6, 8];
+    let rand = Math.floor(Math.random()*8);
+    if(rand%2===0){
+      cornerSquares = cornerSquares.reverse();
+    }
+    cornerSquares = cornerSquares.slice(rand%4).concat(cornerSquares.slice(0, rand%4));
     const board = this.state.board;
     for(let i =0; i<cornerSquares.length; i++){
       if(board[cornerSquares[i]]===0){
@@ -132,57 +153,59 @@ const App = React.createClass ({
     return null;
   },
   updateUserIcon(icon){
-    let state = this.state;
-    state.errorMessage = undefined;
+    let {errorMessage, userIcon, playerTurn, messageShorthand} = this.state;
+    errorMessage = undefined;
     if(icon === "X"){
-      state.userIcon = "X";
-      state.playerTurn = "userTurn";
-      state.messageShorthand = "userTurn";
-      this.setState(state);
+      userIcon = "X";
+      playerTurn = "userTurn";
+      messageShorthand = "userTurn";
+      this.setState({errorMessage, userIcon, playerTurn, messageShorthand});
+      localStorage.ticTacToeData = JSON.stringify(this.state);
     }
     if(icon === "O"){
-      state.userIcon = "O";
-      state.playerTurn = "compTurn";
-      state.messageShorthand = "compTurn";
-      this.setState(state);
+      userIcon = "O";
+      playerTurn = "compTurn";
+      messageShorthand = "compTurn";
+      this.setState({errorMessage, userIcon, playerTurn, messageShorthand});
+      localStorage.ticTacToeData = JSON.stringify(this.state);
       this.computerPick();
     }
   },
   userPick(i){
-    let state = this.state;
-    if(state.userIcon===undefined){
-      state.errorMessage = "Please select X or O first.";
-    }else if(state.messageShorthand==="userWin"){
-      state.errorMessage = "Game Already Over. (You won!)";
-    }else if(state.messageShorthand === "compWin"){
-      state.errorMessage = "Game Already Over. (Computer won.)";
-    }else if(state.messageShorthand==="tie"){
-      state.errorMessage = "Game Over. (It was a tie.)";
-    }else if(state.playerTurn==="compTurn"){
-      state.errorMessage = "It is the computer's turn. Please wait.";
-    }else if(state.board[i]!==0){
-      state.errorMessage = "That square already taken!";
+    let {errorMessage, messageShorthand, board, userIcon, playerTurn} = this.state;
+    if(userIcon===undefined){
+      errorMessage = "Please select X or O first.";
+    }else if(messageShorthand==="userWin"){
+      errorMessage = "Game Already Over. (You won!)";
+    }else if(messageShorthand === "compWin"){
+      errorMessage = "Game Already Over. (Computer won.)";
+    }else if(messageShorthand==="tie"){
+      errorMessage = "Game Over. (It was a tie.)";
+    }else if(playerTurn==="compTurn"){
+      errorMessage = "It is the computer's turn. Please wait.";
+    }else if(board[i]!==0){
+      errorMessage = "That square already is taken!";
     }else{
-      state.board[i]=1;
+      board[i]=1;
     }
-    this.setState(state);
-    if(!state.errorMessage){
+    this.setState({errorMessage, board});
+    localStorage.ticTacToeData = JSON.stringify(this.state);
+    if(!errorMessage){
       let winner = this.checkGameWon();
       if(winner){
         this.concludeGame(winner);
-        return;
       }else{
-        state.playerTurn = "compTurn";
-        state.messageShorthand = "compTurn";
-        state.errorMessage = undefined;
-        this.setState(state);
+        playerTurn = "compTurn";
+        messageShorthand = "compTurn";
+        errorMessage = undefined;
+        this.setState({playerTurn, messageShorthand, errorMessage});
+        localStorage.ticTacToeData = JSON.stringify(this.state);
         this.computerPick();
-        return;
       }
     }
   },
   computerPick(){
-    let state = this.state;
+    let {board, playerTurn, messageShorthand} = this.state;
     let targetSquare;
     let targetSquares = this.checkPotentialWin();
     // check for square needed for immediate Win
@@ -192,10 +215,10 @@ const App = React.createClass ({
     }else if(targetSquares.squareToBlock!==null){
       targetSquare = targetSquares.squareToBlock;
     // pick center square if not already picked
-    }else if(state.board[4]===0){
+    }else if(board[4]===0){
       targetSquare = 4;
     // prevent opposite corners picked by opponent with adjacent corner as next pick leading to automatic win by opponent
-    }else if((state.board[0]===1 && state.board[8]===1) || (state.board[2]===1 && state.board[6]===1)){
+    }else if((board[0]===1 && board[8]===1) || (board[2]===1 && board[6]===1)){
       targetSquare = this.getSideSquare();
       if(targetSquare === null){
         targetSquare = this.getCornerSquare();
@@ -210,15 +233,17 @@ const App = React.createClass ({
     }
     const timeout = Math.random()*500+250;
     setTimeout(() => {
-      state.board[targetSquare] = -1;
-      this.setState(state);
+      board[targetSquare] = -1;
+      this.setState({board});
+      localStorage.ticTacToeData = JSON.stringify(this.state);
       let winner = this.checkGameWon();
       if(winner){
         this.concludeGame(winner);
       }else{
-        state.playerTurn = "userTurn";
-        state.messageShorthand = "userTurn";
-        this.setState(state);
+        playerTurn = "userTurn";
+        messageShorthand = "userTurn";
+        this.setState({board, playerTurn, messageShorthand});
+        localStorage.ticTacToeData = JSON.stringify(this.state);
       }
     }, timeout);
   },
