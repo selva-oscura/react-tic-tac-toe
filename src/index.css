@@ -1,16 +1,26 @@
 *{
   box-sizing: border-box;
 }
+
+@font-face {
+  font-family: 'Shojumaru';
+  src: url('./fonts/shojumaru-regular.eot'); /* IE9 Compat Modes */
+  src: url('./fonts/shojumaru-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('./fonts/shojumaru-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('./fonts/shojumaru-regular.woff') format('woff'), /* Pretty Modern Browsers */
+       url('./fonts/shojumaru-regular.ttf')  format('truetype'); /* Safari, Android, iOS */
+}
+
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-	font-family: 'Ubuntu', sans-serif;
-	font-size: 2em;
+  font-family: 'TrebuchetMS', sans-serif;
+  font-size: 2em;
 }
 
 h1, h2, h3, h4, .message button{
-	font-family: 'Shojumaru', cursive;
+  font-family: 'Shojumaru', cursive;
 }
 
 .left-align{
@@ -26,4 +36,3 @@ h1, h2, h3, h4, .message button{
 .right{
   float:right;
 }
-
