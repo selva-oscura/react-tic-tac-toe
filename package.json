@@ -1,7 +1,7 @@
 {
   "name": "Tic-Tac-Toe",
   "version": "0.0.1",
-  "description": "Tic-Tac-Toe -- Progressive Web App, made with node, React, service workers, and storage of state and app shell in the browser",
+  "description": "Tic-Tac-Toe -- Progressive Web App, made with node, React, service workers, and storage of state & app shell in the browser",
   "homepage": "https://selva-oscura.github.io/react-tic-tac-toe",
   "repository": {
     "type": "git",
