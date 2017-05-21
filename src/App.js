@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import Message from './Message';
 import Scores from './Scores';
 import Board from './Board';
 import ErrorMessage from './ErrorMessage';
 
-const App = React.createClass ({
-  getInitialState(){
+class App extends Component{
+  constructor(props){
+    super(props);
     let ticTacToeData = localStorage.ticTacToeData;
     if(ticTacToeData){
       ticTacToeData = JSON.parse(ticTacToeData);
@@ -24,10 +25,13 @@ const App = React.createClass ({
         messageShorthand: "XorO",
         errorMessage: undefined,
       }
+      localStorage.ticTacToeData = JSON.stringify(ticTacToeData);
     }
-    localStorage.ticTacToeData = JSON.stringify(ticTacToeData);
-    return ticTacToeData;
-  },
+    this.state = ticTacToeData;
+    this.concludeGame = this.concludeGame.bind(this);
+    this.updateUserIcon = this.updateUserIcon.bind(this);
+    this.userPick = this.userPick.bind(this);
+  }
   winningSolutions(){
     return [
       // rows
@@ -42,7 +46,7 @@ const App = React.createClass ({
       [0,4,8],
       [2,4,6]
     ];
-  },
+  }
   playAgain(){
     let state = this.state;
     state.userIcon = undefined;
@@ -52,7 +56,7 @@ const App = React.createClass ({
     state.errorMessage = undefined;
     localStorage.ticTacToeData = JSON.stringify(state);
     this.setState(state);
-  },
+  }
   concludeGame(winner){
     let state = this.state;
     if(winner==="user"){
@@ -68,7 +72,7 @@ const App = React.createClass ({
     state.playerTurn = undefined;
     localStorage.ticTacToeData = JSON.stringify(state);
     this.setState(state);
-  },
+  }
   checkGameWon(){
     const winningSolutions = this.winningSolutions();
     const board = this.state.board;
@@ -94,7 +98,7 @@ const App = React.createClass ({
       winner = "tie";
     }
     return winner;
-  },
+  }
   checkPotentialWin(){
     const winningSolutions = this.winningSolutions();
     const board = this.state.board;
@@ -121,7 +125,7 @@ const App = React.createClass ({
       }
     }
     return targetSquares;
-  },
+  }
   getSideSquare(){
     let sideSquares = [1, 3, 5, 7];
     const board = this.state.board;
@@ -136,7 +140,7 @@ const App = React.createClass ({
       }
     }
     return null;
-  },
+  }
   getCornerSquare(){
     let cornerSquares = [0, 2, 6, 8];
     let rand = Math.floor(Math.random()*8);
@@ -151,7 +155,7 @@ const App = React.createClass ({
       }
     }
     return null;
-  },
+  }
   updateUserIcon(icon){
     let {errorMessage, userIcon, playerTurn, messageShorthand} = this.state;
     errorMessage = undefined;
@@ -170,7 +174,7 @@ const App = React.createClass ({
       localStorage.ticTacToeData = JSON.stringify(this.state);
       this.computerPick();
     }
-  },
+  }
   userPick(i){
     let {errorMessage, messageShorthand, board, userIcon, playerTurn} = this.state;
     if(userIcon===undefined){
@@ -203,7 +207,7 @@ const App = React.createClass ({
         this.computerPick();
       }
     }
-  },
+  }
   computerPick(){
     let {board, playerTurn, messageShorthand} = this.state;
     let targetSquare;
@@ -246,7 +250,7 @@ const App = React.createClass ({
         localStorage.ticTacToeData = JSON.stringify(this.state);
       }
     }, timeout);
-  },
+  }
   render() {
     return (
       <div className="App">
@@ -272,6 +276,6 @@ const App = React.createClass ({
       </div>
     );
   }
-});
+};
 
 export default App;
