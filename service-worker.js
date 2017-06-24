@@ -1,4 +1,4 @@
-var version = 2.1;
+var version = 0.2.1;
 var cacheName = 'tic-tac-toe-v' + version;
 var dataCacheName = 'tic-tac-toe-appData-v' + version;
 var filesToCache = [
