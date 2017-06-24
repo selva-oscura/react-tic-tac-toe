@@ -1,4 +1,4 @@
-var version = 0.2.1;
+var version = "0.2.1";
 var cacheName = 'tic-tac-toe-v' + version;
 var dataCacheName = 'tic-tac-toe-appData-v' + version;
 var filesToCache = [
@@ -27,7 +27,7 @@ self.addEventListener('activate', function(e){
 	e.waitUntil(
 		caches.keys().then(function(keyList){
 			return Promise.all(keyList.map(function(key){
-				if(key !== changeName && key !== dataCacheName){
+				if(key !== cacheName && key !== dataCacheName){
 					// console.log('[ServiceWorker] Removing old cache', key);
 					return caches.delete(key);
 				}
