@@ -3,6 +3,9 @@
 # dependencies
 node_modules
 
+# dev
+backup_imgs_webp
+
 # testing
 coverage
 
