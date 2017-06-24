@@ -28,9 +28,10 @@ class App extends Component{
       localStorage.ticTacToeData = JSON.stringify(ticTacToeData);
     }
     this.state = ticTacToeData;
-    this.concludeGame = this.concludeGame.bind(this);
+    this.playAgain = this.playAgain.bind(this);
     this.updateUserIcon = this.updateUserIcon.bind(this);
     this.userPick = this.userPick.bind(this);
+
   }
   winningSolutions(){
     return [
