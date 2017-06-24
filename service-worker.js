@@ -1,4 +1,4 @@
-var version = 2;
+var version = 2.1;
 var cacheName = 'tic-tac-toe-v' + version;
 var dataCacheName = 'tic-tac-toe-appData-v' + version;
 var filesToCache = [
@@ -6,11 +6,6 @@ var filesToCache = [
 	'./index.html',
 	'./favicon.ico',
 	'./img/tic-tac-toe.png',
-	'./img/tic-tac-toe-128x128.png',
-	'./img/tic-tac-toe-144x144.png',
-	'./img/tic-tac-toe-152x152.png',
-	'./img/tic-tac-toe-192x192.png',
-	'./img/tic-tac-toe-256x256.png',
 	'./fonts/shojumaru-regular.eot',
 	'./fonts/shojumaru-regular.ttf',
 	'./fonts/shojumaru-regular.woff',
